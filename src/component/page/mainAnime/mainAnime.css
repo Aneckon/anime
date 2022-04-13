@@ -1,0 +1,51 @@
+.main__anime{
+  padding: 40px 0;
+}
+.btn__favorite{
+  position: absolute;
+  left: 40px;
+  top: 0;
+  max-width: 24px;
+  width: 100%;
+  fill: #000;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.btn__favorite-active path{
+  fill: red;
+}
+.main__anime img{
+  max-width: 100%;
+  width: 100%;
+}
+.main__anime h1{
+  font-size: 40px;
+  font-weight: bold;
+}
+.main__anime-categorie{
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main__anime-rating{
+  color: gold;
+  display: flex;
+  align-items: center;
+}
+.main__anime-rating svg{
+  width: 15px;
+  height: 15px;
+  fill: gold;
+  margin-right: 10px;
+}
+.main__anime-descroptions{
+  padding-top: 50px;
+  font-size: 18px;
+  line-height: 30px;
+}
+.studio{
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 30px;
+}

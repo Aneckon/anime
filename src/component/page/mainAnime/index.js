@@ -1,0 +1,1 @@
+export { MainAnime } from './mainAnime';

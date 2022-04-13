@@ -1,0 +1,9 @@
+.main__favorites {
+  display: flex;
+  align-items: center;
+}
+.main__favorites svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}

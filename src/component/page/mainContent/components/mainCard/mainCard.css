@@ -1,0 +1,64 @@
+.main__card {
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.main__card-btn{
+  padding: 2px 10px;
+  background: #fff;
+  color: #000;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+  border-radius: 10px;
+}
+.main__card:hover .main__card-content{
+  opacity: 1;
+}
+.main__card img {
+  max-width: 100%;
+  width: 100%;
+  height: 450px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.main__card-content {
+  background: rgba(0, 0, 0, .6);
+  position: absolute;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  opacity: 0;
+  transition: .3s;
+  text-align: center;
+  padding: 180px 0;
+}
+.main__card h2 {
+  font-size: 26px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+.main__card-categorie p{
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.rating{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  color: gold;
+  font-weight: bold;
+}
+.rating svg {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  fill: gold;
+}

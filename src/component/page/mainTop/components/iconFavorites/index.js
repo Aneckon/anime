@@ -1,0 +1,1 @@
+export { IconFavorites } from './iconFavorites';

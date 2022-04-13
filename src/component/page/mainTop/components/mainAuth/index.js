@@ -1,0 +1,1 @@
+export { MainAuth } from './mainAuth';
