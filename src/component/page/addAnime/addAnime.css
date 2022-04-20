@@ -14,16 +14,17 @@
   padding: 0 15px;
   margin: 10px;
   height: 40px;
-  max-width: 45%;
   width: 100%;
   background: transparent;
   border: 2px solid #fff;
   border-radius: 20px;
   color: #fff;
 }
+.form p{
+  color: red;
+}
 .form textarea{
   padding: 15px;
-  max-width: 92%;
   width: 100%;
   margin: 10px;
   background: transparent;

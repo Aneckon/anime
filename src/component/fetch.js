@@ -1,20 +1,24 @@
 import axios from 'axios';
 
-export async function Fetch({ email, password, autch, username }) {
-  try {
-    const res = await axios.post(`http://localhost:5000/api${autch}`, {
+export function Fetch({ email, password, autch, username, setErrorServer }) {
+  axios
+    .post(`http://localhost:5000/api${autch}`, {
       email,
       password,
       username,
+    })
+    .then((res) => {
+      const user = JSON.stringify(res.data.userData.user);
+      localStorage.setItem('user', user);
+      localStorage.setItem('token', res.data.userData.refreshToken);
+    })
+    .catch((error) => {
+      setErrorServer(error.response.data);
     });
-    const user = JSON.stringify(res.data.userData.user);
-    localStorage.setItem('user', user);
-    localStorage.setItem('token', res.data.userData.refreshToken);
-  } catch (error) {
-    if (error === undefined) {
-      console.log(error.res.data);
-    }
-  }
+}
+
+export function FetchLogoute() {
+  axios.post(`http://localhost:5000/api/logoute`);
 }
 
 export async function FetchAddAnime({ name, img, categorie, studio, description }) {

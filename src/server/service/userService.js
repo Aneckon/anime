@@ -1,7 +1,6 @@
 const UserModels = require('../models/userModels');
 const tokenService = require('./tokenService');
 const UserDto = require('../dtos/userDtos');
-const userModels = require('../models/userModels');
 
 class UserService {
   async regisntation(email, password, username) {
@@ -18,14 +17,18 @@ class UserService {
     return { ...tokens, user: userDto };
   }
 
-  async login(email, password) {
+  async login(email, password, username) {
     const user = await UserModels.findOne({ email });
     if (!user) {
       throw new Error(`Користувач з такою поштою не використовується`);
     }
-    const isPassword = await (password, user.password);
+    const isPassword = await UserModels.findOne({ password });
     if (!isPassword) {
       throw new Error(`Користувач з таким паролем не використовується`);
+    }
+    const isUserName = await UserModels.findOne({ username });
+    if (!isUserName) {
+      throw new Error(`Користувач з таким никнеймом не використовується`);
     }
 
     const userDto = new UserDto(user);

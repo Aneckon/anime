@@ -6,7 +6,7 @@ import './mainAuth.css';
 
 export const MainAuth = () => {
   const [login, setLogin] = useState(false);
-  const [register, setRegister] = useState(false);
+  const [registers, setRegister] = useState(false);
 
   return (
     <div className="main__auth">
@@ -14,8 +14,8 @@ export const MainAuth = () => {
         <button onClick={() => setLogin(true)}>Логін</button>
         <button onClick={() => setRegister(true)}>Регистрація</button>
       </div>
-      <Register register={register} setRegister={setRegister} />
-      <Login login={login} setLogin={setLogin} />
+      <Register registers={registers} setRegister={setRegister} />
+      <Login logins={login} setLogin={setLogin} />
     </div>
   );
 };

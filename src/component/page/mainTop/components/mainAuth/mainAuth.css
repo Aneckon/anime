@@ -60,6 +60,7 @@
 .auth input::placeholder{
   color: #fff;
 }
+
 .auth form{
   display: flex;  
   align-items: center;
@@ -86,4 +87,8 @@
 }
 .auth form button:last-child{
   border-radius: 10px;
+}
+.auth p{
+  color: red;
+  padding-bottom: 20px;
 }

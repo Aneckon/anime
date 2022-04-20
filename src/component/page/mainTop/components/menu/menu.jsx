@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { setIsAuth, setUser } from '../../../../../redux/user/reducer';
-import { Fetch } from '../../../../fetch';
+import { FetchLogoute } from '../../../../fetch';
 
 import './menu.css';
 
@@ -10,14 +10,13 @@ export const Menu = () => {
   const userInfo = useSelector((state) => state.user.currentUser);
   const [menu, setMenu] = useState(false);
   const dispatch = useDispatch();
-  const autch = '/logoute';
 
   const handleRemove = () => {
     dispatch(setIsAuth(false));
-    Fetch({ autch });
+    FetchLogoute();
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    localStorage.removeItem('state')
+    localStorage.removeItem('state');
   };
 
   const user = localStorage.getItem('user');

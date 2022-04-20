@@ -22,8 +22,8 @@ const animeController = {
   },
   async login(req, res) {
     try {
-      const { email, password } = req.body;
-      const userData = await userService.login(email, password);
+      const { email, password, username } = req.body;
+      const userData = await userService.login(email, password, username);
 
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,

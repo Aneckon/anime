@@ -1,53 +1,76 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
 
 import { setIsAuth, setUser } from '../../../../../../../redux/user/reducer';
 import { Fetch } from '../../../../../../fetch';
 
-export const Register = ({ register, setRegister }) => {
-  const dispatch = useDispatch();
+export const Register = ({ registers, setRegister }) => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
   const autch = '/register';
 
-  const handleRegistr = (event) => {
-    event.preventDefault();
-    if (email.length !== 0 && password.length !== 0 && username.length !== 0) {
-      Fetch({ username, email, password, autch });
-      dispatch(setUser({ email, password, username }));
-      setRegister(false);
-      dispatch(setIsAuth(true));
-    }
+  const handleRegistr = () => {
+    Fetch({ username, email, password, autch });
+    dispatch(setUser({ email, password, username }));
+    setRegister(false);
+    dispatch(setIsAuth(true));
   };
 
   return (
-    <div className={register ? 'auth auth__block' : 'auth'}>
+    <div className={registers ? 'auth auth__block' : 'auth'}>
       <button className="auth__btn" onClick={() => setRegister(false)}>
         +
       </button>
-      <form onSubmit={handleRegistr}>
+      <form onSubmit={handleSubmit(handleRegistr)}>
+        {errors?.firstName?.type === 'required' && <p>This field is required</p>}
+        {errors?.firstName?.type === 'maxLength' && <p>First name cannot exceed 20 characters</p>}
+        {errors?.firstName?.type === 'pattern' && <p>Alphabetical characters only</p>}
         <input
-          type="text"
-          placeholder="ник"
+          {...register('firstName', {
+            required: true,
+            maxLength: 20,
+            pattern: /^[A-Za-z]+$/i,
+          })}
+          placeholder="Нікнейм"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          required
         />
+        {errors?.email?.type === 'required' && <p>This field is required</p>}
+        {errors?.email?.type === 'maxLength' && <p>First name cannot exceed 20 characters</p>}
+        {errors?.email?.type === 'pattern' && <p>Alphabetical characters only</p>}
         <input
-          type="email"
+          {...register('email', {
+            required: true,
+            maxLength: 20,
+            pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+          })}
           placeholder="Електронна пошта"
-          pattern=".+@gmail\.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
+        {errors?.password?.type === 'required' && <p>This field is required</p>}
+        {errors?.password?.type === 'maxLength' && <p>First name cannot exceed 20 characters</p>}
+        {errors?.password?.type === 'pattern' && <p>Alphabetical characters only</p>}
         <input
+          {...register('password', {
+            required: true,
+            maxLength: 20,
+            pattern: /^[A-Za-z]+$/i,
+          })}
           type="password"
-          placeholder="Пароль"
           value={password}
+          placeholder="Пароль"
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
         <button>Регистрація</button>
       </form>

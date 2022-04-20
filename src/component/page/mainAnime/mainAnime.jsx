@@ -12,7 +12,7 @@ export const MainAnime = () => {
   const animeItem = animeList.some((items) => items.img === animeList.img);
 
   const handleFavorite = () => {
-    if (animeItem === true) {
+    if (animeItem !== true) {
       dispatch(addAnimeFavorite(anime));
     } else {
       dispatch(removeAnimeFavorite(anime));
